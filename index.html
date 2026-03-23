@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>リリース速報Pro - セットアップガイド</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#003366',
+            'navy-light': '#004080',
+            'navy-dark': '#002244',
+          },
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      line-height: 1.9;
+    }
+    .step-number {
+      width: 56px;
+      height: 56px;
+      min-width: 56px;
+      border-radius: 50%;
+      background: #003366;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    .code-block {
+      position: relative;
+      background: #1e293b;
+      color: #e2e8f0;
+      border-radius: 8px;
+      padding: 1rem 3rem 1rem 1rem;
+      font-family: 'Menlo', 'Consolas', monospace;
+      font-size: 0.9rem;
+      overflow-x: auto;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: #334155;
+      border: none;
+      color: #94a3b8;
+      padding: 4px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.75rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .copy-btn:hover {
+      background: #475569;
+      color: #fff;
+    }
+    .faq-item summary {
+      cursor: pointer;
+      list-style: none;
+    }
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+    .faq-item summary::before {
+      content: 'Q.';
+      font-weight: 700;
+      color: #003366;
+      margin-right: 0.5rem;
+    }
+    .faq-item[open] .faq-arrow {
+      transform: rotate(180deg);
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+
+  <!-- ヘッダー -->
+  <header class="bg-navy text-white">
+    <div class="max-w-4xl mx-auto px-6 py-16 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">リリース速報Pro</h1>
+      <p class="text-lg md:text-xl text-blue-200 mb-6">新商品・予約・発売情報をまとめてチェック</p>
+      <p class="text-base text-blue-100 max-w-2xl mx-auto leading-relaxed">
+        ゲーム、フィギュア、家電、コラボ商品など、さまざまなジャンルのリリース情報を自動で集めて一覧表示するアプリです。
+      </p>
+    </div>
+  </header>
+
+  <!-- できること -->
+  <section class="max-w-5xl mx-auto px-6 py-16">
+    <h2 class="text-2xl md:text-3xl font-bold text-navy text-center mb-12">できること</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-white border border-gray-200 rounded-xl p-8 text-center shadow-sm hover:shadow-md transition-shadow">
+        <div class="text-5xl mb-4">&#x1F4E1;</div>
+        <h3 class="text-lg font-bold text-navy mb-3">自動収集</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">登録したサイトから1時間ごとに自動で情報を集めます</p>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-xl p-8 text-center shadow-sm hover:shadow-md transition-shadow">
+        <div class="text-5xl mb-4">&#x1F50D;</div>
+        <h3 class="text-lg font-bold text-navy mb-3">かんたん検索</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">カテゴリ、キーワード、ブランドで絞り込み</p>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-xl p-8 text-center shadow-sm hover:shadow-md transition-shadow">
+        <div class="text-5xl mb-4">&#x2699;&#xFE0F;</div>
+        <h3 class="text-lg font-bold text-navy mb-3">カスタマイズ</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">好きなジャンルやサイトを自由に追加</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="max-w-4xl mx-auto border-gray-200">
+
+  <!-- 必要なもの -->
+  <section class="max-w-4xl mx-auto px-6 py-16">
+    <h2 class="text-2xl md:text-3xl font-bold text-navy text-center mb-10">必要なもの</h2>
+    <div class="bg-blue-50 rounded-xl p-8 max-w-lg mx-auto">
+      <ul class="space-y-4 text-lg">
+        <li class="flex items-start gap-3">
+          <span class="text-navy font-bold mt-0.5">&#10003;</span>
+          <span>パソコン（MacまたはWindows）</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-navy font-bold mt-0.5">&#10003;</span>
+          <span>Docker Desktop（無料ソフト）</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="max-w-4xl mx-auto border-gray-200">
+
+  <!-- インストール手順 -->
+  <section class="max-w-4xl mx-auto px-6 py-16">
+    <h2 class="text-2xl md:text-3xl font-bold text-navy text-center mb-14">インストール手順</h2>
+
+    <!-- Step 1 -->
+    <div class="flex gap-6 mb-14">
+      <div class="step-number shrink-0">1</div>
+      <div class="flex-1">
+        <h3 class="text-xl font-bold text-navy mb-4">Docker Desktopをインストール</h3>
+        <p class="text-gray-700 mb-4">
+          Docker Desktopは、アプリを動かすために必要な<strong>無料ソフト</strong>です。<br>
+          難しい設定は不要で、インストールするだけで使えます。
+        </p>
+        <ol class="space-y-3 text-gray-700">
+          <li class="flex items-start gap-2">
+            <span class="text-navy font-bold">1.</span>
+            <span>以下のページにアクセスして、ダウンロードボタンをクリックします</span>
+          </li>
+        </ol>
+        <div class="code-block mt-3 mb-4">
+          <button class="copy-btn" onclick="copyToClipboard(this)">コピー</button>
+          https://www.docker.com/products/docker-desktop/
+        </div>
+        <ol start="2" class="space-y-3 text-gray-700">
+          <li class="flex items-start gap-2">
+            <span class="text-navy font-bold">2.</span>
+            <span>ダウンロードしたファイルを開いて、画面の指示に従ってインストールします</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-navy font-bold">3.</span>
+            <span>インストールが終わったら Docker Desktop を起動して、画面が落ち着くまで少し待ちます（1〜2分程度）</span>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="flex gap-6 mb-14">
+      <div class="step-number shrink-0">2</div>
+      <div class="flex-1">
+        <h3 class="text-xl font-bold text-navy mb-4">リリース速報Proをダウンロード</h3>
+        <ol class="space-y-3 text-gray-700">
+          <li class="flex items-start gap-2">
+            <span class="text-navy font-bold">1.</span>
+            <span>以下のGitHubページにアクセスして、<strong>「Code」→「Download ZIP」</strong>をクリックします</span>
+          </li>
+        </ol>
+        <div class="code-block mt-3 mb-4">
+          <button class="copy-btn" onclick="copyToClipboard(this)">コピー</button>
+          https://github.com/your-username/release-aggregator/releases/latest
+        </div>
+        <ol start="2" class="space-y-3 text-gray-700">
+          <li class="flex items-start gap-2">
+            <span class="text-navy font-bold">2.</span>
+            <span>ダウンロードしたZIPファイルをダブルクリックして展開（解凍）します</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-navy font-bold">3.</span>
+            <span>展開してできたフォルダを、好きな場所に置いてください（デスクトップでOKです）</span>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="flex gap-6 mb-14">
+      <div class="step-number shrink-0">3</div>
+      <div class="flex-1">
+        <h3 class="text-xl font-bold text-navy mb-4">起動する</h3>
+        <p class="text-gray-700 mb-4">
+          「ターミナル」（コンピュータに文字で指示を出すためのアプリ）を使って起動します。
+        </p>
+
+        <div class="bg-gray-50 rounded-lg p-5 mb-5">
+          <p class="font-bold text-navy mb-2">ターミナルの開き方</p>
+          <ul class="space-y-2 text-gray-700 text-sm">
+            <li><strong>Mac:</strong> キーボードで <kbd class="bg-gray-200 rounded px-2 py-0.5 text-xs">&#x2318;</kbd> + <kbd class="bg-gray-200 rounded px-2 py-0.5 text-xs">スペース</kbd> を押して「ターミナル」と入力 → Enter</li>
+            <li><strong>Windows:</strong> スタートメニューで「PowerShell」と検索して開く</li>
+          </ul>
+        </div>
+
+        <p class="text-gray-700 mb-3">以下のコマンドを順番に入力してください（コピー＆ペーストOK）:</p>
+
+        <p class="text-sm text-gray-500 mb-1">フォルダの場所に移動（デスクトップに置いた場合）:</p>
+        <div class="code-block mb-4">
+          <button class="copy-btn" onclick="copyToClipboard(this)">コピー</button>
+          cd ~/Desktop/release-aggregator
+        </div>
+
+        <p class="text-sm text-gray-500 mb-1">起動する（Macの場合）:</p>
+        <div class="code-block mb-4">
+          <button class="copy-btn" onclick="copyToClipboard(this)">コピー</button>
+          ./start.sh
+        </div>
+
+        <p class="text-sm text-gray-500 mb-1">起動する（Windowsの場合）:</p>
+        <div class="code-block mb-4">
+          <button class="copy-btn" onclick="copyToClipboard(this)">コピー</button>
+          .\start.bat
+        </div>
+
+        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg mt-4">
+          <p class="text-sm text-yellow-800">
+            <strong>初回のみ:</strong> 必要なデータを自動でダウンロードするため、<strong>5〜10分</strong>ほどかかります。<br>
+            「起動完了！」と表示されたら準備OKです。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="flex gap-6 mb-8">
+      <div class="step-number shrink-0">4</div>
+      <div class="flex-1">
+        <h3 class="text-xl font-bold text-navy mb-4">ブラウザで開く</h3>
+        <p class="text-gray-700 mb-3">
+          お使いのブラウザ（Chrome、Safariなど）で以下のアドレスを開いてください:
+        </p>
+        <div class="code-block mb-4">
+          <button class="copy-btn" onclick="copyToClipboard(this)">コピー</button>
+          http://localhost:3000
+        </div>
+        <p class="text-gray-700">
+          これがリリース速報Proの画面です。お疲れさまでした！
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="max-w-4xl mx-auto border-gray-200">
+
+  <!-- 使い方 -->
+  <section class="max-w-4xl mx-auto px-6 py-16">
+    <h2 class="text-2xl md:text-3xl font-bold text-navy text-center mb-10">使い方</h2>
+    <div class="grid sm:grid-cols-2 gap-6">
+      <div class="bg-gray-50 rounded-xl p-6">
+        <h3 class="font-bold text-navy mb-2">カテゴリタブ</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">画面上部のタブをクリックして、ジャンルを切り替えることができます。</p>
+      </div>
+      <div class="bg-gray-50 rounded-xl p-6">
+        <h3 class="font-bold text-navy mb-2">キーワード検索</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">検索バーに商品名やブランド名を入力すると、該当する情報だけが表示されます。</p>
+      </div>
+      <div class="bg-gray-50 rounded-xl p-6">
+        <h3 class="font-bold text-navy mb-2">注目ワード</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">右側に表示されるタグをクリックするだけで、かんたんに絞り込めます。</p>
+      </div>
+      <div class="bg-gray-50 rounded-xl p-6">
+        <h3 class="font-bold text-navy mb-2">並べ替え</h3>
+        <p class="text-gray-600 text-sm leading-relaxed">「新しい順」「古い順」を選んで、表示する順番を変えられます。</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="max-w-4xl mx-auto border-gray-200">
+
+  <!-- 管理画面 -->
+  <section class="max-w-4xl mx-auto px-6 py-16">
+    <h2 class="text-2xl md:text-3xl font-bold text-navy text-center mb-10">管理画面</h2>
+    <p class="text-center text-gray-700 mb-8">ブラウザで以下のアドレスを開くと管理画面を使えます:</p>
+    <div class="code-block max-w-md mx-auto mb-10">
+      <button class="copy-btn" onclick="copyToClipboard(this)">コピー</button>
+      http://localhost:3000/admin
+    </div>
+    <div class="grid sm:grid-cols-3 gap-6">
+      <div class="bg-white border border-gray-200 rounded-xl p-6 text-center">
+        <p class="text-3xl mb-3">&#x1F4C1;</p>
+        <h3 class="font-bold text-navy mb-2">カテゴリ管理</h3>
+        <p class="text-gray-600 text-sm">新しいジャンルの追加・削除</p>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-xl p-6 text-center">
+        <p class="text-3xl mb-3">&#x1F310;</p>
+        <h3 class="font-bold text-navy mb-2">情報源管理</h3>
+        <p class="text-gray-600 text-sm">新しいサイトのURL登録</p>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-xl p-6 text-center">
+        <p class="text-3xl mb-3">&#x1F504;</p>
+        <h3 class="font-bold text-navy mb-2">手動収集</h3>
+        <p class="text-gray-600 text-sm">ボタン1つで今すぐ情報を集める</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="max-w-4xl mx-auto border-gray-200">
+
+  <!-- 停止方法 -->
+  <section class="max-w-4xl mx-auto px-6 py-16">
+    <h2 class="text-2xl md:text-3xl font-bold text-navy text-center mb-10">停止方法</h2>
+    <div class="bg-gray-50 rounded-xl p-8 max-w-lg mx-auto">
+      <p class="text-gray-700 mb-4">使い終わったら、以下のどちらかの方法で停止できます:</p>
+      <ul class="space-y-4 text-gray-700">
+        <li class="flex items-start gap-3">
+          <span class="text-navy font-bold">1.</span>
+          <span>ターミナルで以下のコマンドを入力:</span>
+        </li>
+      </ul>
+      <div class="code-block mt-2 mb-5">
+        <button class="copy-btn" onclick="copyToClipboard(this)">コピー</button>
+        ./stop.sh
+      </div>
+      <ul class="space-y-4 text-gray-700">
+        <li class="flex items-start gap-3">
+          <span class="text-navy font-bold">2.</span>
+          <span>Docker Desktopの画面から停止ボタン（■）を押す</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="max-w-4xl mx-auto border-gray-200">
+
+  <!-- FAQ -->
+  <section class="max-w-4xl mx-auto px-6 py-16">
+    <h2 class="text-2xl md:text-3xl font-bold text-navy text-center mb-10">よくある質問</h2>
+    <div class="space-y-4 max-w-2xl mx-auto">
+
+      <details class="faq-item bg-gray-50 rounded-xl overflow-hidden">
+        <summary class="flex items-center justify-between p-6 font-medium text-gray-800 hover:bg-gray-100 transition-colors">
+          <span>起動できません</span>
+          <span class="faq-arrow text-gray-400 transition-transform duration-200">&#9660;</span>
+        </summary>
+        <div class="px-6 pb-6 text-gray-600 leading-relaxed">
+          Docker Desktopが起動しているか確認してください。Docker Desktopのアイコンがパソコンの画面上部（Mac）またはタスクバー（Windows）に表示されていればOKです。表示されていない場合は、Docker Desktopを起動してから再度お試しください。
+        </div>
+      </details>
+
+      <details class="faq-item bg-gray-50 rounded-xl overflow-hidden">
+        <summary class="flex items-center justify-between p-6 font-medium text-gray-800 hover:bg-gray-100 transition-colors">
+          <span>情報が表示されません</span>
+          <span class="faq-arrow text-gray-400 transition-transform duration-200">&#9660;</span>
+        </summary>
+        <div class="px-6 pb-6 text-gray-600 leading-relaxed">
+          初回は情報の収集に少し時間がかかります。5分ほどお待ちいただいてから、ページを再読み込み（ブラウザの更新ボタン）してみてください。
+        </div>
+      </details>
+
+      <details class="faq-item bg-gray-50 rounded-xl overflow-hidden">
+        <summary class="flex items-center justify-between p-6 font-medium text-gray-800 hover:bg-gray-100 transition-colors">
+          <span>新しいジャンルを追加したい</span>
+          <span class="faq-arrow text-gray-400 transition-transform duration-200">&#9660;</span>
+        </summary>
+        <div class="px-6 pb-6 text-gray-600 leading-relaxed">
+          管理画面（<code class="bg-gray-200 rounded px-2 py-0.5 text-sm">http://localhost:3000/admin</code>）から追加できます。「カテゴリ管理」のセクションで、新しいジャンル名を入力して追加ボタンを押してください。
+        </div>
+      </details>
+
+      <details class="faq-item bg-gray-50 rounded-xl overflow-hidden">
+        <summary class="flex items-center justify-between p-6 font-medium text-gray-800 hover:bg-gray-100 transition-colors">
+          <span>パソコンを再起動したらどうすればいいですか？</span>
+          <span class="faq-arrow text-gray-400 transition-transform duration-200">&#9660;</span>
+        </summary>
+        <div class="px-6 pb-6 text-gray-600 leading-relaxed">
+          Docker Desktopを起動してから、ターミナルで <code class="bg-gray-200 rounded px-2 py-0.5 text-sm">./start.sh</code> を実行してください。前回集めた情報はそのまま残っていますのでご安心ください。
+        </div>
+      </details>
+
+      <details class="faq-item bg-gray-50 rounded-xl overflow-hidden">
+        <summary class="flex items-center justify-between p-6 font-medium text-gray-800 hover:bg-gray-100 transition-colors">
+          <span>料金はかかりますか？</span>
+          <span class="faq-arrow text-gray-400 transition-transform duration-200">&#9660;</span>
+        </summary>
+        <div class="px-6 pb-6 text-gray-600 leading-relaxed">
+          いいえ、すべて無料です。追加料金やサブスクリプションはありません。
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer class="bg-navy-dark text-white mt-16">
+    <div class="max-w-4xl mx-auto px-6 py-10 text-center">
+      <p class="text-lg font-bold mb-2">リリース速報Pro</p>
+      <p class="text-sm text-blue-300">最終更新日: 2026年3月23日</p>
+    </div>
+  </footer>
+
+  <script>
+    function copyToClipboard(button) {
+      const codeBlock = button.parentElement;
+      const text = codeBlock.textContent.replace('コピー', '').trim();
+      navigator.clipboard.writeText(text).then(function() {
+        button.textContent = 'コピー済み';
+        button.style.color = '#22c55e';
+        setTimeout(function() {
+          button.textContent = 'コピー';
+          button.style.color = '';
+        }, 2000);
+      }).catch(function() {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        button.textContent = 'コピー済み';
+        button.style.color = '#22c55e';
+        setTimeout(function() {
+          button.textContent = 'コピー';
+          button.style.color = '';
+        }, 2000);
+      });
+    }
+  </script>
+
+</body>
+</html>
